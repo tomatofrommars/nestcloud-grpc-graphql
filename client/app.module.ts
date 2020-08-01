@@ -5,7 +5,7 @@ import { ConsulModule } from '@nestcloud/consul';
 import { ServiceModule } from '@nestcloud/service';
 import { LoadbalanceModule } from '@nestcloud/loadbalance';
 import { TerminusModule } from '@nestjs/terminus';
-import { HeroController } from './hero.controller';
+import { SchoolController } from './school.controller';
 
 @Module({
     imports: [
@@ -17,7 +17,7 @@ import { HeroController } from './hero.controller';
             useFactory: () => ({ endpoints: [{ url: '/health', healthIndicators: [] }] }),
         }),
     ],
-    controllers: [HeroController],
+    controllers: [SchoolController],
 })
 export class AppModule {
 }

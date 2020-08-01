@@ -4,7 +4,7 @@ import { BootModule } from '@nestcloud/boot';
 import { ConsulModule } from '@nestcloud/consul';
 import { ServiceModule } from '@nestcloud/service';
 import { LoadbalanceModule } from '@nestcloud/loadbalance';
-import { HeroController } from './hero.controller';
+import { SchoolModule } from './school/school.module';
 
 @Module({
     imports: [
@@ -12,8 +12,8 @@ import { HeroController } from './hero.controller';
         ConsulModule.register({ dependencies: [NEST_BOOT] }),
         ServiceModule.register({ dependencies: [NEST_BOOT, NEST_CONSUL] }),
         LoadbalanceModule.register({ dependencies: [NEST_BOOT] }),
+        SchoolModule,
     ],
-    controllers: [HeroController],
 })
 export class AppModule {
 }

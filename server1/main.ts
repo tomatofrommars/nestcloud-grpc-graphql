@@ -10,8 +10,8 @@ async function bootstrap() {
         transport: Transport.GRPC,
         options: {
             url: `0.0.0.0:${NestCloud.global.boot.get('service.port')}`,
-            package: 'hero',
-            protoPath: join(__dirname, './hero.proto'),
+            package: 'school',
+            protoPath: join(__dirname, './school/school.proto'),
         },
     });
     await app.startAllMicroservicesAsync();

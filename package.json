@@ -9,6 +9,7 @@
     "start:client": "ts-node client/main.ts"
   },
   "dependencies": {
+    "cli-color": "^2.0.0",
     "@godaddy/terminus": "^4.1.0",
     "@grpc/proto-loader": "^0.5.3",
     "@nestcloud/boot": "^0.6.5",
@@ -20,6 +21,7 @@
     "@nestcloud/service": "^0.6.5",
     "@nestjs/common": "6.1.1",
     "@nestjs/core": "6.1.1",
+    "@nestjs/cqrs": "^6.1.0",
     "@nestjs/microservices": "6.1.1",
     "@nestjs/platform-express": "^6.1.1",
     "@nestjs/terminus": "^6.1.2",
@@ -33,6 +35,7 @@
     "typescript": "3.4.4"
   },
   "devDependencies": {
+    "@types/cli-color": "^2.0.0",
     "@types/node": "10.14.5",
     "ts-node": "8.1.0",
     "tslint": "5.16.0"

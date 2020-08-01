@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package school;
+
+import "google/protobuf/empty.proto";
+
+service SchoolService {
+    rpc Get (GetSchoolRequest) returns (GetSchoolResponse) {
+    }
+
+    rpc Rename (School) returns (RenameResponse) {
+    }
+}
+
+message GetSchoolRequest {
+    int32 id = 1;
+}
+
+message GetSchoolResponse {
+    School school = 1;
+}
+
+message RenameResponse {
+    string result = 1;
+}
+
+message School {
+    int32 id = 1;
+    string name = 2;
+}
