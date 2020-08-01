@@ -1,34 +1,12 @@
-
-[travis-image]: https://api.travis-ci.org/nest-cloud/nestcloud.svg?branch=master
-[travis-url]: https://travis-ci.org/nest-cloud/nestcloud
-[linux-image]: https://img.shields.io/travis/nest-cloud/nestcloud/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nest-cloud/nestcloud
-
-# NestCloud
-
-<p align="center">
-    <a href="https://www.npmjs.com/~nestcloud" target="_blank"><img src="https://img.shields.io/npm/v/@nestcloud/core.svg" alt="NPM Version"/></a>
-    <a href="https://www.npmjs.com/~nestcloud" target="_blank"><img src="https://img.shields.io/npm/l/@nestcloud/core.svg" alt="Package License"/></a>
-    <a href="https://www.npmjs.com/~nestcloud" target="_blank"><img src="https://img.shields.io/npm/dm/@nestcloud/core.svg" alt="NPM Downloads"/></a>
-    <a href="https://travis-ci.org/nest-cloud/nestcloud" target="_blank"><img src="https://travis-ci.org/nest-cloud/nestcloud.svg?branch=master" alt="Travis"/></a>
-    <a href="https://travis-ci.org/nest-cloud/nestcloud" target="_blank"><img src="https://img.shields.io/travis/nest-cloud/nestcloud/master.svg?label=linux" alt="Linux"/></a>
-    <a href="https://coveralls.io/github/nest-cloud/nestcloud?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nest-cloud/nestcloud/badge.svg?branch=master" alt="Coverage"/></a>
-</p>
+# NestCloud + Grpc + GraphQL
 
 A NodeJS micro-service solution based on Consul, writing by Typescript language and NestJS framework.
 
-## Dependency
 
-* Consul
+## Precondition
 
-## Requirement Components
-
-* @nestcloud/common
-* @nestcloud/core
-* @nestcloud/consul
-* @nestcloud/consul-service
-* @nestcloud/consul-loadbalance
-* @nestcloud/grpc
+* Node.js > 10.0.0
+* Consul in port 8500 needed
 
 ## How to run
 
@@ -39,4 +17,22 @@ yarn run start:server2
 yarn run start:client
 ```
 
-Then visit http://localhost:3004/heros
+## Endpoint 
+* Get School http://localhost:3004/school/get/1234
+* Rename School name http://127.0.0.1:3004/graphql
+* GraphQL Playground http://127.0.0.1:3004/graphql
+
+getById
+ ```
+{
+  getById(id: 1234) {
+    name
+  }
+}
+```
+renameSchool
+```
+mutation {
+  renameSchool(id: 1234, name: "aaaeeea")
+}
+```

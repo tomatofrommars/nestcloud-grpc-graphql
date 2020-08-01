@@ -3,21 +3,18 @@ import { GrpcClient, RpcClient, Service } from '@nestcloud/grpc';
 import { join } from 'path';
 
 import { SchoolService } from './interfaces/school-service.interface';
-import {GetSchoolResponse, RenameResponse} from './interfaces/schroll.interface';
+
+const rpcOptions = {
+    service: 'rpc-server',
+    package: 'school',
+    protoPath: join(__dirname, './interfaces/school-service.proto'),
+}
 
 @Controller('/school')
 export class SchoolController {
-    @RpcClient({
-        service: 'rpc-server',
-        package: 'school',
-        protoPath: join(__dirname, './interfaces/school-service.proto'),
-    })
+    @RpcClient(rpcOptions)
     private readonly client: GrpcClient;
-    @Service('SchoolService', {
-        service: 'rpc-server',
-        package: 'school',
-        protoPath: join(__dirname, './interfaces/school-service.proto'),
-    })
+    @Service('SchoolService', rpcOptions)
     private schoolService: SchoolService;
 
     @Get('/get/:id')
