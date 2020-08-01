@@ -22,7 +22,7 @@ yarn run start:client
 * Rename School name http://127.0.0.1:3004/graphql
 * GraphQL Playground http://127.0.0.1:3004/graphql
 
-getById
+Playground: getById
  ```
 {
   getById(id: 1234) {
@@ -30,7 +30,7 @@ getById
   }
 }
 ```
-renameSchool
+Playground: renameSchool
 ```
 mutation {
   renameSchool(id: 1234, name: "aaaeeea")
