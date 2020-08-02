@@ -7,8 +7,7 @@ import { LoadbalanceModule } from '@nestcloud/loadbalance';
 import { TerminusModule } from '@nestjs/terminus';
 import { SchoolController } from './school.controller';
 import { GraphQLModule } from '@nestjs/graphql';
-import { SchoolResolver } from "./provider/school.resolver";
-
+import { SchoolResolver } from './provider/school.resolver';
 
 @Module({
     imports: [
@@ -24,7 +23,7 @@ import { SchoolResolver } from "./provider/school.resolver";
         }),
     ],
     controllers: [SchoolController],
-    providers: [SchoolResolver]
+    providers: [SchoolResolver],
 })
 export class AppModule {
 }

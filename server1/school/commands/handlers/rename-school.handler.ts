@@ -19,6 +19,6 @@ export class RenameSchoolHandler implements ICommandHandler<RenameSchoolCommand>
     );
     middleSchool.rename(name);
     middleSchool.commit();
-    return 'success'
+    return 'success';
   }
 }

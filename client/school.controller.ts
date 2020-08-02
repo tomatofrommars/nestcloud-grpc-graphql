@@ -8,7 +8,7 @@ const rpcOptions = {
     service: 'rpc-server',
     package: 'school',
     protoPath: join(__dirname, './interfaces/school-service.proto'),
-}
+};
 
 @Controller('/school')
 export class SchoolController {
@@ -24,7 +24,7 @@ export class SchoolController {
 
     @Get('/rename')
     async rename(@Query('id') id: number, @Query('name') name: string) {
-        console.log(id, name)
+        console.log(id, name);
         const data = await this.schoolService.rename({ id, name }).toPromise();
         console.log(data);
         return data;

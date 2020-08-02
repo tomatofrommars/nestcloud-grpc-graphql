@@ -12,7 +12,7 @@ import { SchoolModule } from './school/school.module';
         ConsulModule.register({ dependencies: [NEST_BOOT] }),
         ServiceModule.register({ dependencies: [NEST_BOOT, NEST_CONSUL] }),
         LoadbalanceModule.register({ dependencies: [NEST_BOOT] }),
-        SchoolModule
+        SchoolModule,
     ],
 })
 export class AppModule {

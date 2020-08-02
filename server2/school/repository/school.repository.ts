@@ -10,6 +10,6 @@ export class SchoolRepository {
 
   async updateName(id: number, name: string): Promise<string> {
     this.findOneById(id).then(r => middleSchool.rename(name));
-    return "success";
+    return 'success';
   }
 }

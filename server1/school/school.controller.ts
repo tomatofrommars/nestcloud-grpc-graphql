@@ -16,15 +16,15 @@ export class SchoolController {
   @GrpcMethod('SchoolService')
   async get(request: GetSchoolRequest): Promise<GetSchoolResponse> {
     return {
-      school: await this.queryBus.execute(new GetSchoolQuery(request.id))
+      school: await this.queryBus.execute(new GetSchoolQuery(request.id)),
     };
   }
 
   @GrpcMethod('SchoolService')
   async rename(request: School): Promise<RenameResponse> {
-    console.log(request)
+    console.log(request);
     return {
-      result: await this.commandBus.execute(new RenameSchoolCommand(request.id, request.name))
+      result: await this.commandBus.execute(new RenameSchoolCommand(request.id, request.name)),
     };
   }
 }

@@ -7,7 +7,7 @@ export class School extends AggregateRoot {
   }
 
   rename(name: string) {
-    this.name = name
+    this.name = name;
     this.apply(new SchoolRenameEvent(this.id, name));
   }
 }
