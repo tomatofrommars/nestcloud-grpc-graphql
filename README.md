@@ -1,4 +1,4 @@
-# NestCloud + Grpc + GraphQL
+# NestCloud + GRPC + CQRS + GraphQL
 
 A NodeJS micro-service solution based on Consul, writing by Typescript language and NestJS framework.
 
@@ -19,7 +19,7 @@ yarn run start:client
 
 ## Endpoint 
 * Get School http://localhost:3004/school/get/1234
-* Rename School name http://127.0.0.1:3004/graphql
+* Rename School name http://lcalhost:3004/school/rename?id=1234&name=test
 * GraphQL Playground http://127.0.0.1:3004/graphql
 
 Playground: getById
