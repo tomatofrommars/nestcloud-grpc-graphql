@@ -1,8 +1,8 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import * as clc from 'cli-color';
+import { School } from '../../models/school.model';
 import { SchoolRepository } from '../../repository/school.repository';
 import { GetSchoolQuery } from '../impl';
-import {School} from '../../models/school.model';
 
 @QueryHandler(GetSchoolQuery)
 export class GetSchoolHandler implements IQueryHandler<GetSchoolQuery> {

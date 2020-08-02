@@ -1,5 +1,5 @@
-import {Controller, Get, Param, Query} from '@nestjs/common';
 import { GrpcClient, RpcClient, Service } from '@nestcloud/grpc';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { join } from 'path';
 
 import { SchoolService } from './interfaces/school-service.interface';

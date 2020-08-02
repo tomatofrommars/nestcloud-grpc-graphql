@@ -1,10 +1,10 @@
+import { GrpcClient, RpcClient, Service } from '@nestcloud/grpc';
 import { NotFoundException } from '@nestjs/common';
-import {Args, Mutation, Query, Resolver, Subscription} from '@nestjs/graphql';
-import {GrpcClient, RpcClient, Service} from '@nestcloud/grpc';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'apollo-server-express';
-import {SchoolService} from '../interfaces/school-service.interface';
-import {join} from 'path';
-import {School} from './school.model';
+import { join } from 'path';
+import { SchoolService } from '../interfaces/school-service.interface';
+import { School } from './school.model';
 
 const pubSub = new PubSub();
 const rpcOptions = {

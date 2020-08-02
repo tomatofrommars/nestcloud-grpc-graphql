@@ -1,13 +1,13 @@
-import { Module } from '@nestjs/common';
-import { NEST_BOOT, NEST_CONSUL } from '@nestcloud/common';
 import { BootModule } from '@nestcloud/boot';
+import { NEST_BOOT, NEST_CONSUL } from '@nestcloud/common';
 import { ConsulModule } from '@nestcloud/consul';
-import { ServiceModule } from '@nestcloud/service';
 import { LoadbalanceModule } from '@nestcloud/loadbalance';
-import { TerminusModule } from '@nestjs/terminus';
-import { SchoolController } from './school.controller';
+import { ServiceModule } from '@nestcloud/service';
+import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { TerminusModule } from '@nestjs/terminus';
 import { SchoolResolver } from './provider/school.resolver';
+import { SchoolController } from './school.controller';
 
 @Module({
     imports: [

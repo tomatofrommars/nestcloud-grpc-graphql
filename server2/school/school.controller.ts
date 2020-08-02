@@ -1,10 +1,10 @@
-import { Controller} from '@nestjs/common';
-import { GrpcMethod } from '@nestjs/microservices';
+import { Controller } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { GrpcMethod } from '@nestjs/microservices';
 
 import { RenameSchoolCommand } from './commands/impl/rename-school.command';
-import { GetSchoolQuery } from './queries/impl';
 import { GetSchoolRequest, GetSchoolResponse, RenameResponse, School } from './interfaces/schroll.interface';
+import { GetSchoolQuery } from './queries/impl';
 
 @Controller('school')
 export class SchoolController {
