@@ -1,8 +1,8 @@
-import { Field, Int, ObjectType } from 'type-graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class School {
-  @Field(type => Int)
+  @Field({ nullable: false })
   id: number;
 
   @Field({ nullable: true })

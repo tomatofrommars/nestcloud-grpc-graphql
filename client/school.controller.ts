@@ -1,21 +1,25 @@
-import { GrpcClient, RpcClient, Service } from '@nestcloud/grpc';
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, OnModuleInit, Param, Query } from '@nestjs/common';
 import { join } from 'path';
 
 import { SchoolService } from './interfaces/school-service.interface';
-
-const rpcOptions = {
-    service: 'rpc-server',
-    package: 'school',
-    protoPath: join(__dirname, './interfaces/school-service.proto'),
-};
+import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
 
 @Controller('/school')
-export class SchoolController {
-    @RpcClient(rpcOptions)
-    private readonly client: GrpcClient;
-    @Service('SchoolService', rpcOptions)
+export class SchoolController implements OnModuleInit {
     private schoolService: SchoolService;
+
+    @Client({
+        transport: Transport.GRPC,
+        options: {
+            package: 'school',
+            protoPath: join(__dirname, './interfaces/school-service.proto'),
+        },
+    })
+    client: ClientGrpc;
+
+    onModuleInit() {
+        this.schoolService = this.client.getService<SchoolService>('SchoolService');
+    }
 
     @Get('/get/:id')
     async get(@Param('id') id: number) {

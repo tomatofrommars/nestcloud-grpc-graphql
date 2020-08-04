@@ -1,26 +1,32 @@
-import { GrpcClient, RpcClient, Service } from '@nestcloud/grpc';
-import { NotFoundException } from '@nestjs/common';
+import { NotFoundException, OnModuleInit } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'apollo-server-express';
 import { join } from 'path';
 import { SchoolService } from '../interfaces/school-service.interface';
 import { School } from './school.model';
+import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
 
 const pubSub = new PubSub();
-const rpcOptions = {
-  service: 'rpc-server',
-  package: 'school',
-  protoPath: join(__dirname, '../interfaces/school-service.proto'),
-};
 
-@Resolver(of => School)
-export class SchoolResolver {
-  @RpcClient(rpcOptions)
-  private readonly client: GrpcClient;
-  @Service('SchoolService', rpcOptions)
+@Resolver(() => School)
+export class SchoolResolver implements OnModuleInit {
+
   private schoolService: SchoolService;
 
-  @Query(returns => School)
+  @Client({
+    transport: Transport.GRPC,
+    options: {
+      package: 'school',
+      protoPath: join(__dirname, '../interfaces/school-service.proto'),
+    },
+  })
+  client: ClientGrpc;
+
+  onModuleInit() {
+    this.schoolService = this.client.getService<SchoolService>('SchoolService');
+  }
+
+  @Query(() => School)
   async getById(@Args('id') id: number) {
     const school = await this.schoolService.get({ id }).toPromise();
     console.log('playground:' + school.school);
@@ -30,7 +36,7 @@ export class SchoolResolver {
     return school.school;
   }
 
-  @Mutation(returns => String)
+  @Mutation(() => String)
   async renameSchool(@Args('id') id: number, @Args('name') name: string) {
     const result = await this.schoolService.rename({ id, name }).toPromise();
     if (!result) {
@@ -41,7 +47,7 @@ export class SchoolResolver {
     return result.result + ' ' + name;
   }
 
-  @Subscription(returns => String)
+  @Subscription(() => String)
   nameUpdated() {
     return pubSub.asyncIterator('nameUpdate');
   }
