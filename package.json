@@ -30,7 +30,7 @@
     "@nestjs/testing": "^7.4.2",
     "apollo-server-express": "^2.16.1",
     "class-transformer": "0.2.3",
-    "class-validator": "0.12.2",
+    "class-validator": "0.14.0",
     "cli-color": "^2.0.0",
     "consul": "^0.34.0",
     "graphql": "^14.0.0",
